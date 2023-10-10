@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OfferX | Offerte erstellen</title>
+    <link rel="stylesheet" href="./css/create_offer.css">
+</head>
+<body>
+    <header>
+        <h1>OfferX</h1>
+        <nav class="nav-web">
+            <ul class="nav-links">
+                <li><a href="#">MEIN PROFIL</a></li>
+                <li><a href="#">MEINE ANGEBOTE</a></li>
+                <li><a href="#">MEINE KUNDEN</a></li>
+            </ul>
+
+        </nav>
+
+        <div class="flex-placeholder">
+        </div>
+
+        <img src="./img/burger-menu.svg" alt="" width="40px" class="burger-menu" onclick="openNav()">
+
+        <div class="menu-overlay">
+            <span class="closebtn" onclick="closeNav()">&times;</span>
+            <nav class="nav-mobile">
+                <ul class="nav-links-mobile">
+                    <li><a href="#">MEIN PROFIL</a></li>
+                    <li><a href="#">MEINE ANGEBOTE</a></li>
+                    <li><a href="#">MEINE KUNDEN</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <aside>
+        <div style="position: fixed; top: 35%; left: 20px;">
+            <ul class="progress-bar">
+                <li><a href="javascript:void(0)" onclick="scrollToSection(1)" class="selection" id="section1">Empfänger</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection(2)" class="selection" id="section2">Produkte</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection(3)" class="selection" id="section3">Überprüfen</a></li>
+            </ul>
+        </div>
+        <div style="position: fixed; bottom: 20px; left: 20px;">
+            <button onclick="previousSection()">Zurück</button>
+            <button onclick="nextSection()">Weiter</button>
+        </div>
+    </aside>
+    <main>
+        
+        <section id="1" class="content-page content-page-1">
+            <div id="content-1">
+                <h2>Empfänger</h2>
+                <form action="">
+                    <label for="client_select">Kunde auswählen</label>
+                    <select name="client_select">
+                        <option value="Kunde 1">Kunde 1</option>
+                        <option value="Kunde 2">Kunde 2</option>
+                    </select>
+                    <label for="date">Datum</label>
+                    <input type="date" name="date">
+                    <label for="title">Betreff</label>
+                    <input type="text" placeholder="Betreff" name="title">
+                    <label for="message">Nachricht</label>
+                    <textarea name="message" id="" cols="40" rows="10" placeholder="Nachricht"></textarea>
+                </form>
+                
+            </div>
+        </section>
+        <section id="2" class="content-page content-page-2">
+            <div id="content-2">
+                <h2>Produkte</h2>
+                <form action="">
+                    <table style="border: solid; width: 60vw;">
+                        <tr>
+                            <th style="width: 1%;">Pos.</th>
+                            <th style="width: 25%;">Produkt</th>
+                            <th style="width: 10%;">Anzahl</th>
+                            <th style="width: 10%;">Preis</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <select name="product" id="product_select">
+                                    <option value="Produkt 1">Produkt 1</option>
+                                    <option value="Produkt 2">Produkt 2</option>
+                                </select>
+                            </td>
+                            <td><input type="number" placeholder="Anzahl"></td>
+                            <td><input type="number" placeholder="Preis"></td>
+                        </tr>
+                    </table>
+                    <p onclick="addRow()">+</p>
+                </form>
+            </div>
+        </section>
+        <section id="3" class="content-page content-page-3">
+            <div id="content-3">
+                <h2>Überprüfen</h2>
+                <div>
+                    <h3>Empfänger</h3>
+                    <p>Max Muster</p>
+                    <p>Musterstrasse 1</p>
+                    <p>8000 Zürich</p>
+                </div>
+                <div>
+                    <h3>Inhalt</h3>
+                    <p>Datum: 28.5.2023</p>
+                    <p>Betreff: Offerte</p>
+                    <p>Gültigkeit: 20 Tage</p>
+                    <p>Nachricht: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum quam ut dolorem error autem qui quia aliquid.</p>
+                </div>
+                <div>
+                    <table style="width: 60vw;">
+                        <tr>
+                            <th>Pos.</th>
+                            <th>Produkt</th>
+                            <th>Anzahl</th>
+                            <th>Preis</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Produkt</td>
+                            <td>1</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Produkt</td>
+                            <td>1</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Produkt</td>
+                            <td>3</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Produkt</td>
+                            <td>4</td>
+                            <td>100</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <script src="./js/pagescroll_mechanics.js"></script>
+    <script>
+        function openNav () {
+            document.querySelector('.menu-overlay').classList.add('active');
+        }
+
+        function closeNav () {
+            document.querySelector('.menu-overlay').classList.remove('active');
+        }
+
+        function addRow() {
+            var table = document.querySelector('table');
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            cell1.innerHTML = table.rows.length - 1;
+            cell2.innerHTML = '<select name="product" id="product_select"><option value="Produkt 1">Produkt 1</option><option value="Produkt 2">Produkt 2</option></select>';
+            cell3.innerHTML = "<input type='number' placeholder='Anzahl'>";
+            cell4.innerHTML = "<input type='number' placeholder='Preis'>";
+        }
+
+    </script>
+</body>
+</html>
