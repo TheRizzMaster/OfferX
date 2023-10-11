@@ -66,12 +66,16 @@ function scrollToSection(sectionId) {
 //Setzt die Section mit der übergebenen Id auf active
 function setActiveSection(sectionId) {
     var section = document.getElementById("section"+sectionId);
+    var image = document.querySelector(".img"+sectionId);
     section.classList.add("active");
+    image.src = "./img/schwarzer_rand.svg";
 }
 
 //Setzt die Section mit der übergebenen Id auf inactive
 function setInactiveSection(sectionId) {
     var section = document.getElementById("section"+sectionId);
+    var image = document.querySelector(".img"+sectionId);
     section.classList.remove("active");
+    image.src = "./img/schwarzer_punkt.svg";
 }
 
