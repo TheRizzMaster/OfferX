@@ -1,8 +1,8 @@
-
+//Definiert die erste Session im local Storage und setzt die erste Section auf active
 localStorage.setItem("currentSection", 1);
 setActiveSection(1);
 
-
+//Scrollt zur nächsten Section
 function nextSection() {
 
     const pages = document.getElementsByClassName("content-page");
@@ -25,6 +25,7 @@ function nextSection() {
     localStorage.setItem("currentSection", nextSectionId);
 }
 
+//Scrollt zur vorherigen Section
 function previousSection() {
 
     const pages = document.getElementsByClassName("content-page");
@@ -47,6 +48,7 @@ function previousSection() {
     localStorage.setItem("currentSection", previousSectionId);
 }
 
+//Scrollt zur Section mit der übergebenen Id
 function scrollToSection(sectionId) {
 
     if (sectionId == localStorage.getItem("currentSection")) {
@@ -61,12 +63,15 @@ function scrollToSection(sectionId) {
     localStorage.setItem("currentSection", sectionId);
 }
 
+//Setzt die Section mit der übergebenen Id auf active
 function setActiveSection(sectionId) {
     var section = document.getElementById("section"+sectionId);
     section.classList.add("active");
 }
 
+//Setzt die Section mit der übergebenen Id auf inactive
 function setInactiveSection(sectionId) {
     var section = document.getElementById("section"+sectionId);
     section.classList.remove("active");
 }
+

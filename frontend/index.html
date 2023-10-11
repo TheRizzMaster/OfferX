@@ -1,11 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OfferX | Login</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
+
 <body>
-    
+    <main>
+        <section id="login">
+            <form id="login-form">
+                <h2>Login</h2>
+                <label for="email">E-Mail</label>
+                <input class="input-field" type="email" name="email" id="email" placeholder="E-Mail">
+                <label for="password">Passwort</label>
+                <input class="input-field" type="password" name="password" id="password" placeholder="Passwort">
+                <p><a href="#">Passwort vergessen</a></p>
+                <button id="login-btn">Login</button>
+                <p>Noch kein Konto? <a href="javascript:void(0)" onclick="toggleLoginSignUp('signup')">Registrieren</a>
+                </p>
+            </form>
+            <form id="signup-form" class="hidden">
+                <h2>Registrieren</h2>
+                <label for="firstname">Vorname</label>
+                <input type="text" name="firstname" id="firstname" placeholder="Vorname">
+                <label for="lastname">Nachname</label>
+                <input type="text" name="lastname" id="lastname" placeholder="Nachname">
+                <label for="signup-email">E-Mail</label>
+                <input type="email" name="signup-email" id="signup-email" placeholder="E-Mail">
+                <label for="signup-password">Passwort</label>
+                <input type="password" name="signup-password" id="signup-password" placeholder="Passwort">
+                <button id="signup-btn">Registrieren</button>
+                <p>Du hast bereits ein Konto? <a href="javascript:void(0)" onclick="toggleLoginSignUp()">Login</a></p>
+            </form>
+        </section>
+        <section id="infoscreen">
+            <!-- <img src="./img/logo.png" alt="logo"> -->
+            <lottie-player
+                autoplay
+                mode="normal"
+                src="./img/data.json"
+                style="width: 320px">
+            </lottie-player>
+        </section>
+        <section id="links">
+            <a href="">FAQ</a>
+            <a href="">AGB</a>
+            <a href="">Kontakt</a>
+            <a href="">Datenschutz</a>
+            <a href="">Impressum</a>
+        </section>
+    </main>
+    <script src="./js/login.js"></script>
 </body>
+
 </html>
