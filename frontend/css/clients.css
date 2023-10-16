@@ -56,18 +56,17 @@ header h1 {
     border-radius: 5px;
     padding: 15px 30px;
     cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .btn-1:hover {
     background-color: #1A2E44;
 }
 
-.btn-1 a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-}
+
 
 .btn-2 {
     background-color: #29537F;
@@ -88,8 +87,8 @@ main {
 #content {
     padding-bottom: 5vh;
     margin: 0 auto;
-    width: 60vw;
-    max-width: 800px;
+    width: 80vw;
+    max-width: 1000px;
 }
 
 #controls {
@@ -137,14 +136,13 @@ main {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236291fd' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-search'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
 }
 
-#customers {
+#clients {
     border-collapse: collapse;
     width: 100%;
-    max-width: 800px;
     margin: 0 auto;
 }
 
-#customers thead th {
+#clients thead th {
     background-color: #9EAFC1;
     color: white;
     font-weight: bold;
@@ -152,18 +150,173 @@ main {
     text-align: left;
 }
 
-#customers tbody td {
+#clients tbody td {
     border: 1px solid #9EAFC1;
     padding: 10px;
 }
 
-#customers tbody tr:nth-child(even) {
+#clients tbody tr:nth-child(even) {
     background-color: #F2F2F2;
 }
 
-#customers tbody tr:hover {
+#clients tbody tr:hover {
     background-color: #D3D3D3;
 }
+
+
+.create-client-popup-wrapper {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    padding-top: 20px;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+  }
+
+.create-client-popup {
+    background-color: var(--light-gray);
+    padding: 2px;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 20px 40px;
+  }
+  
+  .close {
+    color: #000000d0;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    padding-right: 10px;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #F2F2F2;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .card {
+      max-width: 800px;
+      width: 60vw;
+      min-width: 200px;
+      margin: 0 auto;
+      padding: 5px;
+      border-radius: 15px;
+  }
+  
+  label {
+    color: var(--black);
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[class="create-form-input"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: var(--secondary-color);
+  }
+  
+  ::placeholder {
+    color: var(--primary-color);
+  }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hidden {
+    display: none;
+  }
+  
+  #create-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 4fr 1fr;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .left {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+
+  .right {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+
+  .bottom {
+    grid-area: 2 / 1 / 3 / 3;
+  }
+
+  #create-error {
+    color: red;
+    font-size: 14px;
+    margin-top: 0;
+    text-align: center;
+  }
+
+
+  .show-client-popup-wrapper {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    padding-top: 20px;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+  }
+
+.show-client-popup {
+    background-color: var(--light-gray);
+    padding: 2px;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 20px 40px;
+  }
+  
+  .show-close {
+    color: #000000d0;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    padding-right: 10px;
+  }
+  
+  .show-close:hover,
+  .show-close:focus {
+    color: #F2F2F2;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .show-card {
+      max-width: 800px;
+      width: 60vw;
+      height: 80vh;
+      min-width: 200px;
+      margin: 0 auto;
+      padding: 5px;
+      border-radius: 15px;
+  }
 
 
 
@@ -255,6 +408,13 @@ main {
         color: #fff;
         text-decoration: underline;
     }
+
+    #create-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+      }
 
 }
 

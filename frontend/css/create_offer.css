@@ -76,13 +76,8 @@ section:nth-child(3){
 }
 
 .progress-bar li {
-    padding: 15px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 10px;
+    padding: 20px;
 }
-
 
 .content-page-1, .content-page-2, .content-page-3 {
     display: grid;
@@ -101,7 +96,6 @@ section:nth-child(3){
     text-decoration: none;
     color: #000000;
     font-size: 20px;
-
 }
 
 .selection.active {
@@ -116,7 +110,103 @@ aside {
     height: 100vh;
     position: fixed;
     margin-top: 56.5px;
+    z-index: -1; 
 }
+
+.btn-1 {
+    background-color: #29537F;
+    border-style: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.btn-1:hover {
+    background-color: #1A2E44;
+}
+
+.btn-2 {
+    background-color: #29537F;
+    border-style: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.btn-2:hover {
+    background-color: #1A2E44;
+}
+
+
+#product-table {
+    border: solid;
+    width: 60vw;
+}
+
+.hidden {
+    display: none;
+}
+
+.select-product-popup-wrapper {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    padding-top: 20px;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+  }
+
+.select-product-popup {
+    background-color: var(--light-gray);
+    padding: 2px;
+    border-radius: 5px;
+    width: 35%;
+  }
+  
+  .close {
+    color: #000000d0;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    padding-right: 10px;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #F2F2F2;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .card {
+      max-width: 500px;
+      width: 30vw;
+      min-width: 200px;
+      margin: 0 auto;
+      padding: 5px;
+      border-radius: 15px;
+  }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+  }
 
 
 @media only screen and (max-width: 900px) {

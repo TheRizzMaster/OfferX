@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OfferX | Offerte</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/view_offer.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!--FAVICONS-->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--FAVICONS-->
+</head>
+<body>
+    <main>
+        <div class="menu-buttons">
+            <button id="home" class="btn-1">Zurück</button>
+            <button id="export" class="btn-1">PDF Download</button>
+        </div>
+
+        <section id="offer-frame" style="display: none;">
+            <div id="offer-header">
+                <img src="./img/logo.png" alt="Logo" id="offer-logo">
+            </div>
+            <div id="offer-address">
+                <p>Max Muster | Musterstrasse 3 | 7000 Chur</p>
+                <div>
+                    <p>Kunde Muster<br>Musterstrasse 3<br>7000 Chur</p>
+                </div>
+            </div>
+            <div id="offer-info">
+                <div id="offer-left">
+                    <p>Offerten-Nr.</p>
+                    <p>Datum</p>
+                    <p>Gültigkeit</p>
+                </div>
+                <div id="offer-right">
+                    <p>123456123456123456</p>
+                    <p>01.01.2021</p>
+                    <p>01.01.2022</p>
+                </div>
+            </div>
+            <div id="offer-intro">
+                <h2>Offerte XYZ</h2>
+                <p>Sehr geehrte Damen und Herren</p>
+                <p>Wir freuen uns, Ihnen folgende Offerte unterbreiten zu dürfen:</p>
+            </div>
+            <div id="offer-products">
+                <table id="product-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 4%;">Pos</th>
+                            <th style="width: 38%;">Produkt</th>
+                            <th style="width: 10%;">Anzahl</th>
+                            <th style="width: 20%;">Preis</th>
+                            <th style="width: 20%;">Positionspreis</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-content">
+                    </tbody>
+                </table>
+            </div>
+            <div id="offer-summary">
+                <p>Bei Rückfragen gerne an: +79 814 10 79</p>
+                <p>Freundliche Grüsse</p>
+                <br>
+                <p>Max Muster</p>
+            </div>
+        </section>
+    </main>
+
+
+    <script type="module" src="./js/supabase.js"></script>
+    <script type="module" src="./js/view_offer.js"></script>
+
+</body>
+</html>

@@ -6,23 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OfferX | Profil</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/profile.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <!--FAVICONS-->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--FAVICONS-->
 
 </head>
 
 <body>
     <header>
-        <img src="./img/logo.png" alt="" width="140px">
+        <img src="./img/logo.png" alt="" width="140px" onclick="window.location.href='./dashboard.html'">
         <nav class="nav-web">
             <ul class="nav-links">
-                <li><a href="#">MEIN PROFIL</a></li>
-                <li><a href="#">MEINE ANGEBOTE</a></li>
-                <li><a href="#">MEINE KUNDEN</a></li>
+                <li><a href="./profile.html">MEIN PROFIL</a></li>
+                <li><a href="./products.html">MEINE ANGEBOTE</a></li>
+                <li><a href="./clients.html">MEINE KUNDEN</a></li>
             </ul>
         </nav>
-        <button class="btn-1">
-            <a href="./create_offer.html">Offerte erstellen</a>
-        </button>
+        <button class="btn-1" onclick="window.location.href='./create_offer.html'">Offerte erstellen</button>
 
         <img src="./img/burger-menu.svg" alt="" width="40px" class="burger-menu" onclick="openNav()">
 
@@ -30,23 +48,58 @@
             <span class="closebtn" onclick="closeNav()">&times;</span>
             <nav class="nav-mobile">
                 <ul class="nav-links-mobile">
-                    <li><a href="#">MEIN PROFIL</a></li>
-                    <li><a href="#">MEINE ANGEBOTE</a></li>
-                    <li><a href="#">MEINE KUNDEN</a></li>
+                    <li><a href="./profile.html">MEIN PROFIL</a></li>
+                    <li><a href="./products.html">MEINE ANGEBOTE</a></li>
+                    <li><a href="./clients.html">MEINE KUNDEN</a></li>
                 </ul>
-                <button class="btn-mob">
-                    <a href="./create_offer.html">Offerte erstellen</a>
-                </button>
+                <button class="btn-mob" onclick="window.location.href='./create_offer.html'">Offerte erstellen</button>
             </nav>
         </div>
 
     </header>
     <main>
-        
+        <div class="content-wrapper">
+            <h1 class="title">Profil</h1>
+            <section id="logo-container">
+                <img id="logo" src="./img/placeholder_logo.png" alt="">
+                <input type="file" name="file" id="file" class="inputfile" />
+                <label for="file">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path fill="white" d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+                    <span>Logo hochladen (PNG)</span>   
+                </label>
+            </section>
+            <section id="profile-container">
+                <form id="profile-form" action="">
+                    <label for="title">Titel</label>
+                    <input type="text" name="title" id="title">
+                    <label for="firstname">Vorname</label>
+                    <input type="text" name="firstname" id="firstname" required>
+                    <label for="lastname">Nachname</label>
+                    <input type="text" name="lastname" id="lastname" required>
+                    <label for="company">Firmenname</label>
+                    <input type="text" name="company" id="company" required>
+                    <label for="company_additional">Firmenzusatz</label>
+                    <input type="text" name="company_additional" id="company_additional">
+                    <label for="address">Strasse und Hausnummer</label>
+                    <input type="text" name="address" id="address"required>
+                    <label for="zip">PLZ</label>
+                    <input type="text" name="zip" id="zip" required>
+                    <label for="city">Ort</label>
+                    <input type="text" name="city" id="city" required>
+                    <button id="save-btn">Speichern</button>
+                </form>
+            </section>
+        </div>
+
+        <button id="logout-btn" style="position: fixed; left: 20px; bottom: 20px;">Logout</button>
+
+
     </main>
     <footer></footer>
 
     <script src="./js/menu_mechanics.js"></script>
+    <script type="module" src="./js/supabase.js"></script>
+    <script type="module" src="./js/profile.js"></script>
 
 </body>
 

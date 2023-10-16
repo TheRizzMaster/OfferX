@@ -4,10 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OfferX | Login</title>
+    <title>OfferX | Offerten erstellen | Login</title>
+    <meta name="keywords" content="OfferX, tool, webapp, Offers, Office, useful, generator, free, PDF, swiss, Schweiz, Offerten, Generator, Büro, Nützlich, Kostenlos, Online">
+    <meta name="description" content="Kostenlos mit wenig Aufwand Kunden erfassen und Offerten erstellen">
+    <meta name="author" content="Siro Rudolf">
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+
+    <!--FAVICONS-->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--FAVICONS-->
+
 </head>
 
 <body>
@@ -16,26 +41,35 @@
             <form id="login-form">
                 <h2>Login</h2>
                 <label for="email">E-Mail</label>
-                <input class="input-field" type="email" name="email" id="email" placeholder="E-Mail">
+                <input class="input-field" type="email" name="email" id="email" placeholder="E-Mail" required>
                 <label for="password">Passwort</label>
-                <input class="input-field" type="password" name="password" id="password" placeholder="Passwort">
-                <p><a href="#">Passwort vergessen</a></p>
+                <input class="input-field" type="password" name="password" id="password" placeholder="Passwort" required>
+                <p><a href="javascript:void(0)" id="forget">Passwort vergessen</a></p>
                 <button id="login-btn">Login</button>
-                <p>Noch kein Konto? <a href="javascript:void(0)" onclick="toggleLoginSignUp('signup')">Registrieren</a>
-                </p>
+                <p>Noch kein Konto? <a href="javascript:void(0)" id="toggleToSignUp">Registrieren</a></p>
+                <p id="login-error" style="color: red;" class="hidden">Error:</p>
             </form>
             <form id="signup-form" class="hidden">
                 <h2>Registrieren</h2>
                 <label for="firstname">Vorname</label>
-                <input type="text" name="firstname" id="firstname" placeholder="Vorname">
+                <input type="text" name="firstname" id="firstname" placeholder="Vorname" required>
                 <label for="lastname">Nachname</label>
-                <input type="text" name="lastname" id="lastname" placeholder="Nachname">
+                <input type="text" name="lastname" id="lastname" placeholder="Nachname" required>
                 <label for="signup-email">E-Mail</label>
-                <input type="email" name="signup-email" id="signup-email" placeholder="E-Mail">
+                <input type="email" name="signup-email" id="signup-email" placeholder="E-Mail" required>
                 <label for="signup-password">Passwort</label>
-                <input type="password" name="signup-password" id="signup-password" placeholder="Passwort">
+                <input type="password" name="signup-password" id="signup-password" placeholder="Passwort" required>
                 <button id="signup-btn">Registrieren</button>
-                <p>Du hast bereits ein Konto? <a href="javascript:void(0)" onclick="toggleLoginSignUp()">Login</a></p>
+                <p>Du hast bereits ein Konto? <a href="javascript:void(0)" id="toggleToLogin">Login</a></p>
+                <p id="signup-error" style="color: red;" class="hidden">Error:</p>
+            </form>
+            <form id="reset-password-form" class="hidden">
+                <h2>Passwort vergessen</h2>
+                <label for="reset-email">E-Mail</label>
+                <input type="email" name="reset-email" id="reset-email" placeholder="E-Mail" required>
+                <button id="reset-btn">Passwort zurücksetzten</button>
+                <p>Zurück zu <a href="javascript:void(0)" id="backToLogin">Login</a></p>
+                <p id="reset-error" style="color: red;" class="hidden">Error:</p>
             </form>
         </section>
         <section id="infoscreen">
@@ -55,7 +89,8 @@
             <a href="">Impressum</a>
         </section>
     </main>
-    <script src="./js/login.js"></script>
+    <script type="module" src="./js/supabase.js"></script>
+    <script type="module" src="./js/login.js"></script>
 </body>
 
 </html>

@@ -6,15 +6,38 @@
     <title>OfferX | Offerte erstellen</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/create_offer.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+
+    <!--FAVICONS-->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--FAVICONS-->
+
+
 </head>
 <body>
     <header>
-        <img src="./img/logo.png" alt="" width="140px">
+        <img src="./img/logo.png" alt="" width="140px" onclick="window.location.href='./dashboard.html'">
         <nav class="nav-web">
             <ul class="nav-links">
-                <li><a href="#">MEIN PROFIL</a></li>
-                <li><a href="#">MEINE ANGEBOTE</a></li>
-                <li><a href="#">MEINE KUNDEN</a></li>
+                <li><a href="./profile.html">MEIN PROFIL</a></li>
+                <li><a href="./products.html">MEINE ANGEBOTE</a></li>
+                <li><a href="./clients.html">MEINE KUNDEN</a></li>
             </ul>
 
         </nav>
@@ -28,28 +51,26 @@
             <span class="closebtn" onclick="closeNav()">&times;</span>
             <nav class="nav-mobile">
                 <ul class="nav-links-mobile">
-                    <li><a href="#">MEIN PROFIL</a></li>
-                    <li><a href="#">MEINE ANGEBOTE</a></li>
-                    <li><a href="#">MEINE KUNDEN</a></li>
+                    <li><a href="./profile.html">MEIN PROFIL</a></li>
+                    <li><a href="./products.html">MEINE ANGEBOTE</a></li>
+                    <li><a href="./clients.html">MEINE KUNDEN</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+    <div style="position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: row; gap: 10px;">
+        <button class="btn-1" id="previousSectionBtn">Zurück</button>
+        <button class="btn-1" id="nextSectionBtn">Weiter</button>
+        <button class="btn-1 hidden" id="generateOfferBtn">Offerte Generieren</button>
+    </div>
     <aside>
         <div style="position: fixed; top: 35%; left: 20px;">
             <ul class="progress-bar">
-                <li><img class="img1" src="./img/schwarzer_punkt.svg" width="30px" alt=""><a href="javascript:void(0)" onclick="scrollToSection(1)" class="selection" id="section1">Empfänger</a></li>
-                <li><img class="img2" src="./img/schwarzer_punkt.svg" width="30px" alt=""><a href="javascript:void(0)" onclick="scrollToSection(2)" class="selection" id="section2">Produkte</a></li>
-                <li><img class="img3" src="./img/schwarzer_punkt.svg" width="30px" alt=""><a href="javascript:void(0)" onclick="scrollToSection(3)" class="selection" id="section3">Überprüfen</a></li>
-                
+                <li class="selection active" id="section1">Empfänger</li>
+                <li class="selection" id="section2">Produkte</li>
+                <li class="selection" id="section3">Überprüfen</li>
             </ul>
-
         </div>
-        <div style="position: fixed; bottom: 20px; left: 20px;">
-            <button onclick="previousSection()">Zurück</button>
-            <button onclick="nextSection()">Weiter</button>
-        </div>
-
     </aside>
     <main>
         
@@ -58,16 +79,17 @@
                 <h2>Empfänger</h2>
                 <form action="">
                     <label for="client_select">Kunde auswählen</label>
-                    <select name="client_select">
-                        <option value="Kunde 1">Kunde 1</option>
-                        <option value="Kunde 2">Kunde 2</option>
+                    <select id="client_select" name="client_select">
+                        <option value="">-</option>
                     </select>
                     <label for="date">Datum</label>
-                    <input type="date" name="date">
+                    <input type="date" name="date" id="date">
                     <label for="title">Betreff</label>
-                    <input type="text" placeholder="Betreff" name="title">
+                    <input type="text" placeholder="Betreff" name="title" id="title">
                     <label for="message">Nachricht</label>
-                    <textarea name="message" id="" cols="40" rows="10" placeholder="Nachricht"></textarea>
+                    <textarea id="message" name="message" id="" cols="40" rows="10" placeholder="Nachricht"></textarea>
+                    <label for="validity">Gültigkeit in Tagen</label>
+                    <input type="number" placeholder="30" name="validity" id="validity" min="1" step="1" oninput="this.value = Math.round(this.value);">
                 </form>
                 
             </div>
@@ -75,40 +97,63 @@
         <section id="2" class="content-page content-page-2">
             <div id="content-2">
                 <h2>Produkte</h2>
-                <form action="">
-                    <table style="border: solid; width: 60vw;">
-                        <tr>
-                            <th style="width: 1%;">Pos.</th>
-                            <th style="width: 25%;">Produkt</th>
-                            <th style="width: 10%;">Anzahl</th>
-                            <th style="width: 10%;">Preis</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <select name="product" id="product_select">
-                                    <option value="Produkt 1">Produkt 1</option>
-                                    <option value="Produkt 2">Produkt 2</option>
-                                </select>
-                            </td>
-                            <td><input type="number" placeholder="Anzahl"></td>
-                            <td><input type="number" placeholder="Preis"></td>
-                        </tr>
+                    <table id="product-table" class="hidden">
+                        <thead>
+                            <tr>
+                                <th style="width: 40%;">Produkt</th>
+                                <th style="width: 25%;">Einheit</th>
+                                <th style="width: 10%;">Anzahl</th>
+                                <th style="width: 20%;">Preis</th>
+                                <th style="width: 5%;"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-table-content">
+                        </tbody>
                     </table>
-                    <p onclick="addRow()">+</p>
-                </form>
+                    <button id="add-product-btn" class="btn-2">+</button>
+                    <select name="vat" id="vat">
+                        <option value="">-</option>
+                        <option value="7.7">7.7%</option>
+                        <option value="3.7">3.7%</option>
+                        <option value="2.5">2.5%</option>
+                        <option value="0">0%</option>
+                    </select>
             </div>
+
+            <div id="select-popup" class="select-product-popup-wrapper">
+                <div class="select-product-popup">
+                    <span class="close">&times;</span>
+    
+                    <div class="card">
+                        <h3 class="">Produkt auswählen</h3>
+                        <p></p>
+                        <form id="create-form">
+                            <select name="product_select" id="product_select">
+                                <option value="">-</option>
+                            </select>
+                            <label for="quantity">Anzahl <span style="color: red">*</span></label>
+                            <input type="number" class="create-form-input" placeholder="1" name="quantity" id="quantity" min="1" step="1" oninput="this.value = Math.round(this.value);" required>
+                            <p id="add-error" style="color:red;" class="hidden">Error: </p>
+                            <div class="button-wrapper">
+                                <button type="submit" name="save" id="save-product-btn" class="btn-1">Hinzufügen</button>
+                            </div>
+                        </form>
+                    </div>
+    
+                </div>
+            </div>
+
         </section>
         <section id="3" class="content-page content-page-3">
             <div id="content-3">
                 <h2>Überprüfen</h2>
-                <div>
+                <div id="client-address">
                     <h3>Empfänger</h3>
                     <p>Max Muster</p>
                     <p>Musterstrasse 1</p>
                     <p>8000 Zürich</p>
                 </div>
-                <div>
+                <div id="offer-data">
                     <h3>Inhalt</h3>
                     <p>Datum: 28.5.2023</p>
                     <p>Betreff: Offerte</p>
@@ -117,36 +162,17 @@
                 </div>
                 <div>
                     <table style="width: 60vw;">
-                        <tr>
-                            <th>Pos.</th>
-                            <th>Produkt</th>
-                            <th>Anzahl</th>
-                            <th>Preis</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Produkt</td>
-                            <td>1</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Produkt</td>
-                            <td>1</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Produkt</td>
-                            <td>3</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Produkt</td>
-                            <td>4</td>
-                            <td>100</td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th style="width: 40%;">Produkt</th>
+                                <th style="width: 20%;">Anzahl</th>
+                                <th style="width: 20%;">Preis</th>
+                                <th style="width: 20%;">Preis Tot.</th>
+                            </tr>
+                        </thead>
+                        <tbody id="offer-data-table">
+
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -155,29 +181,10 @@
         
     </main>
 
-    <script src="./js/pagescroll_mechanics.js"></script>
-    <script>
-        function openNav () {
-            document.querySelector('.menu-overlay').classList.add('active');
-        }
+    <script type="module" src="./js/pagescroll_mechanics.js"></script>
+    <script type="module" src="./js/supabase.js"></script>
+    <script type="module" src="./js/create_offer.js"></script>
+    <script src="./js/menu_mechanics.js"></script>
 
-        function closeNav () {
-            document.querySelector('.menu-overlay').classList.remove('active');
-        }
-
-        function addRow() {
-            var table = document.querySelector('table');
-            var row = table.insertRow(-1);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
-            cell1.innerHTML = table.rows.length - 1;
-            cell2.innerHTML = '<select name="product" id="product_select"><option value="Produkt 1">Produkt 1</option><option value="Produkt 2">Produkt 2</option></select>';
-            cell3.innerHTML = "<input type='number' placeholder='Anzahl'>";
-            cell4.innerHTML = "<input type='number' placeholder='Preis'>";
-        }
-
-    </script>
 </body>
 </html>
