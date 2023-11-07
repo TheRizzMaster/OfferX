@@ -341,12 +341,16 @@ async function addProduct() {
 
     popUp.style.display = "none";
 
-    offerDataTable.innerHTML = `
+    const checkrow = document.createElement('tr');
+
+    checkrow.innerHTML = `
     <td>${product_name}</td>
     <td>${quantityValue}</td>
     <td>${price} / ${unit}</td>
     <td>${totalPrice}.—</td>
     `;
+
+    offerDataTable.appendChild(checkrow);
 
     if(productsTable.classList.contains('hidden')) {
         productsTable.classList.remove('hidden');

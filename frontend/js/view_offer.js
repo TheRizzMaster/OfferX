@@ -1,6 +1,6 @@
 import { supa } from "./supabase.js";
 
-document.addEventListener('DOMContentLoaded', function () {
+// document.addEventListener('DOMContentLoaded', function () {
 
     async function getSession() {
         const { data, error } = await supa.auth.getSession();
@@ -14,8 +14,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     getSession();
     fetchOffer();
+    console.log("DOM fully loaded and parsed");
     
-});
+// });
+
+
 
 const getBase64FromUrl = async (url) => {
     const data = await fetch(url);
@@ -29,6 +32,8 @@ const getBase64FromUrl = async (url) => {
       }
     });
   }
+
+const defaultOfferLogo = await getBase64FromUrl("./img/logo.png");
 
 const offerFrame = document.getElementById('offer-frame');
 const offerLogo = document.getElementById('offer-logo');
@@ -137,9 +142,13 @@ async function fetchOffer() {
     .select('*')
     .eq('user_id', sessionUser.id);
 
-    if(error || logodata.length == 0) {
-        console.log("Error " + logoerror.message);
-        offerLogo.src = getBase64FromUrl("./img/logo.png");
+    if(logoerror) {
+        console.log("Error");
+        offerLogo.src = defaultOfferLogo;
+        // loadDefaultLogo();
+    } else if (logodata == null || logodata.length == 0){
+        offerLogo.src = defaultOfferLogo;
+        // loadDefaultLogo();
     } else {
         console.log(logodata);
         const signedURL = await createSignedUrl();
@@ -270,13 +279,11 @@ async function fetchOffer() {
             }
 
 
-
-            offerFrame.style.display = "grid";
         }
 
     }
 
-
+    offerFrame.style.display = "block";
 
 }
 
@@ -310,6 +317,15 @@ function exportPDF(offername){
     html2pdf().set(opt).from(offerFrame).save();
 
 }
+
+async function loadDefaultLogo() {
+    try {
+      const base64Data = await getBase64FromUrl("./img/logo.png");
+      offerLogo.src = base64Data;
+    } catch (error) {
+      console.error("Error loading the logo:", error);
+    }
+  }
 
 async function retrieveUser() {
     const { data: { user } } = await supa.auth.getUser();

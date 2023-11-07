@@ -54,7 +54,8 @@ header h1 {
 }
 
 .flex-placeholder {
-    flex: 1;
+    width: 185px;
+    visibility: hidden;
 }
 
 section {
@@ -103,6 +104,10 @@ section:nth-child(3){
     transition: 0.75s;
 }
 
+#vat {
+    width: 30vw;
+}
+
 aside {
     background-color: var(--light-gray);
     width: 20vw;
@@ -143,6 +148,10 @@ aside {
 
 .btn-2:hover {
     background-color: #1A2E44;
+}
+
+#add-product-btn{
+    margin-bottom: 30px;
 }
 
 

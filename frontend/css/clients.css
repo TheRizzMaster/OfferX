@@ -80,6 +80,10 @@ header h1 {
     cursor: pointer;
 }
 
+.btn-2:hover {
+    background-color: #1A2E44;
+}
+
 main {
     margin-top: 14vh;
 }
@@ -99,7 +103,6 @@ main {
 }
 
 .search-bar {
-    background-color: var(--action-color);
     border: 1px solid var(--secondary-color);
     color: var(--app-content-main-color);
     font-size: 14px;
@@ -136,13 +139,13 @@ main {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236291fd' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-search'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
 }
 
-#clients {
+#clients, #clients-offers {
     border-collapse: collapse;
     width: 100%;
     margin: 0 auto;
 }
 
-#clients thead th {
+#clients thead th , #clients-offers thead th {
     background-color: #9EAFC1;
     color: white;
     font-weight: bold;
@@ -150,16 +153,16 @@ main {
     text-align: left;
 }
 
-#clients tbody td {
+#clients tbody td , #clients-offers tbody td {
     border: 1px solid #9EAFC1;
     padding: 10px;
 }
 
-#clients tbody tr:nth-child(even) {
+#clients tbody tr:nth-child(even), #clients-offers tbody tr:nth-child(even){
     background-color: #F2F2F2;
 }
 
-#clients tbody tr:hover {
+#clients tbody tr:hover, #clients-offers tbody tr:hover{
     background-color: #D3D3D3;
 }
 
@@ -280,13 +283,13 @@ main {
     height: 100vh;
     overflow: auto;
     background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.5);
     justify-content: center;
     align-items: center;
   }
 
 .show-client-popup {
-    background-color: var(--light-gray);
+    background-color: white;
     padding: 2px;
     border-radius: 5px;
     width: fit-content;

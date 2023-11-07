@@ -89,7 +89,7 @@ h2 {
 }
 
 main {
-    margin-top: 8vh;
+    margin-top: 3vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,9 +109,10 @@ main {
 
 .content-wrapper {
     display: grid;
-    grid-template-rows: 1fr 10fr;
+    grid-template-rows: 1fr;
     grid-template-columns: 1fr 2fr;
-    width: 60vw;
+    width: 80vw;
+    max-width: 1000px;
     height: fit-content;
 }
 

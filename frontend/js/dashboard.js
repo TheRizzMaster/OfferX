@@ -32,10 +32,20 @@ async function fetchOffers() {
     const { data: offers, error } = await supa
         .from('offers')
         .select('*')
-        .eq('user_id', user.id);
+        .eq('user_id', user.id)
+        .eq('status', 'finished');
 
     if (error) {
         console.log(error);
+        return;
+    }
+
+    if(offers.length == 0) {
+        offerContainer.innerHTML = `
+        <div class="no-offers">
+            <h3>Keine Angebote vorhanden</h3>
+        </div>
+        `;
         return;
     }
 
@@ -59,7 +69,7 @@ async function fetchOffers() {
         title = offer.title;
         }
 
-        const totalAmount = offer.total_amount.toFixed(0);
+        const totalAmount = offer.total_amount;
 
 
         offerContainer.innerHTML += `
@@ -67,7 +77,7 @@ async function fetchOffers() {
             <h5 class="offer-date">${date}</h5>
             <h3 class="offer-name">${title}</h3>
             <p class="offer-company">${companys.company_name}</p>
-            <p class="offer-price">${totalAmount}.–</p>
+            <p class="offer-price">${Math.floor(totalAmount)}.–</p>
             <span class="action-btn">
             <a href="javascript:void(0)" class="view-btn" data-offer-id='${offer.id}'><img src="./img/view.svg" alt="view" width="30px"></a>
             <a href="javascript:void(0)" class="delete-btn" data-offer-id='${offer.id}'><img src="./img/delete.svg" alt="delete" width="25px"></a>

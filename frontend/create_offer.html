@@ -9,22 +9,22 @@
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 
     <!--FAVICONS-->
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <!--FAVICONS-->
 
@@ -36,13 +36,14 @@
         <nav class="nav-web">
             <ul class="nav-links">
                 <li><a href="./profile.html">MEIN PROFIL</a></li>
-                <li><a href="./products.html">MEINE ANGEBOTE</a></li>
+                <li><a href="./products.html">MEINE PRODUKTE</a></li>
                 <li><a href="./clients.html">MEINE KUNDEN</a></li>
             </ul>
 
         </nav>
 
         <div class="flex-placeholder">
+            <p>Offer Creating</p>
         </div>
 
         <img src="./img/burger-menu.svg" alt="" width="40px" class="burger-menu" onclick="openNav()">
@@ -52,7 +53,7 @@
             <nav class="nav-mobile">
                 <ul class="nav-links-mobile">
                     <li><a href="./profile.html">MEIN PROFIL</a></li>
-                    <li><a href="./products.html">MEINE ANGEBOTE</a></li>
+                    <li><a href="./products.html">MEINE PRODUKTE</a></li>
                     <li><a href="./clients.html">MEINE KUNDEN</a></li>
                 </ul>
             </nav>
@@ -87,7 +88,7 @@
                     <label for="title">Betreff</label>
                     <input type="text" placeholder="Betreff" name="title" id="title">
                     <label for="message">Nachricht</label>
-                    <textarea id="message" name="message" id="" cols="40" rows="10" placeholder="Nachricht"></textarea>
+                    <textarea id="message" name="message" id="" cols="40" rows="10" placeholder="Nachricht (Die Anrede wird bereits generiert)"></textarea>
                     <label for="validity">Gültigkeit in Tagen</label>
                     <input type="number" placeholder="30" name="validity" id="validity" min="1" step="1" oninput="this.value = Math.round(this.value);">
                 </form>
@@ -111,6 +112,7 @@
                         </tbody>
                     </table>
                     <button id="add-product-btn" class="btn-2">+</button>
+                    <label for="vat">Mehrwertssteuer auswählen</label>
                     <select name="vat" id="vat">
                         <option value="">-</option>
                         <option value="7.7">7.7%</option>
@@ -185,6 +187,11 @@
     <script type="module" src="./js/supabase.js"></script>
     <script type="module" src="./js/create_offer.js"></script>
     <script src="./js/menu_mechanics.js"></script>
+
+    <script>
+        const dateInput = document.getElementById('date');
+        dateInput.value = new Date().toISOString().split('T')[0];
+    </script>
 
 </body>
 </html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="height: 100vh; display: flex; justify-content: center; align-items: center; margin: 0; background-color: red;">
+    <img src="./img/error.png" alt="404" style="width: 30vw;">
+
+    <script>
+
+        smoothColorWheel();
+
+        function smoothColorWheel(){
+            let color = 0;
+            setInterval(() => {
+                color += 1;
+                document.body.style.backgroundColor = `hsl(${color}, 100%, 50%)`;
+            }, 20);
+        
+        }
+        setTimeout(() => {
+            window.location.href = "./index.html";
+        }, 5000);
+    </script>
+
+
+</body>
+</html>
