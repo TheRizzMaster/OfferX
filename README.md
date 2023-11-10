@@ -1,6 +1,7 @@
 # OfferX
  Easily create and export Offers
- This Website Runs on https://www.offerx.ch
+
+This Website Runs on https://www.offerx.ch
 
 
 #ENGLISH VERSION BELOW
