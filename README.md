@@ -66,7 +66,3 @@ So Stack Overflow was a faithful companion on our adventure.
 
 The supabase documentation was sometimes incorrect or did not list certain use cases.
 In such cases the supabase forum, Stack Overflow or simply a (up to 200) Google search queries were necessary to reach the goal.
-
-Translated with www.DeepL.com/Translator (free version)
-
-
