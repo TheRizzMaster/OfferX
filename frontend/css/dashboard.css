@@ -150,6 +150,10 @@ h3 {
         display: none;
     }
 
+    .btn-1 {
+        display: none;
+    }
+
     .burger-menu {
         display: block;
         cursor: pointer;

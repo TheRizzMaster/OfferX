@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = "./index.html";
             console.log("No session");
         } else {
+
+            const w = window.innerWidth;
+            if(w < 900) {
+                alert("Diese Seite ist auf mobilen Geräten nicht verfügbar. Bitte öffnen Sie die Seite auf einem Computer.")
+                window.location.href = "./dashboard.html";
+            }
+
             const user = await retrieveUser();
             console.log(user);
         }
@@ -18,6 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     localStorage.setItem("offer_id", null);
     localStorage.setItem("totalAmount", "0");
+
+
     
 });
 
